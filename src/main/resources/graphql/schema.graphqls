@@ -1,0 +1,55 @@
+type Supermarket{
+    _id:ID
+    invoiceId:String
+    branch:String
+    city:String
+    customerType:String
+    gender:String
+    productLine:String
+    unitPrice:Float
+    quantity:Int
+    taxFive:Float
+    total:Float
+    date:String
+    time:String
+    payment:String
+    cogs:Float
+    grossMarginPercentage:Float
+    grossIncome:Float
+    rating:Float
+}
+
+type AllBranchSales {
+    branch:String
+    count:Float
+}
+
+type AllDates{
+    month:String
+    count:Float
+}
+
+type AllGenderData{
+    gender:String
+    count:Float
+}
+
+type AllPaymentMethod{
+    payment:String,
+    count:Float
+}
+
+schema {
+    query:Query
+}
+
+type Query{
+    getAllData:[Supermarket]
+    getDataById(id: ID!): Supermarket
+    getRecordCount:Int!
+    getAllSalesOfBranches:[AllBranchSales]
+    getAllDateSales:[AllDates]
+    getAllGenderData:[AllGenderData]
+    getAllPaymentData:[AllPaymentMethod]
+    getAllDataByProductLine(productLine: String!): [Supermarket]
+}
